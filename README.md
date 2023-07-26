@@ -6,6 +6,8 @@ Bible Challenge App - this app will help you to learn the Holy Bible and stay in
 
 ## Rules for new developers
 
+# DON'T PUSH IN THE MAIN BRANCH
+
 - We use PSR-2\PSR-4 [See here](https://phptherightway.com/)
 - Names of feature branch with prefix BC_
 - Names of fix branch with prefix FIX_
