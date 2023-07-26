@@ -1,15 +1,14 @@
 <?php
 
+use App\Entities\Bible;
 use App\Http\Controllers\AuthController;
 use App\Models\Quest;
 use App\Models\User;
 use App\Services\BibleService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +46,8 @@ Route::get('/account', function () {
 
 Route::get('/quests', function () {
     $userQuests = User::find(Auth()->user()->id)->quests()->get();
-    $bible = new BibleService();
-    $bibleBookNames = $bible->getBibleNames($bible);
+    $bibleService = new BibleService(new Bible());
+    $bibleBookNames = $bibleService->getBibleNames();
 
     return view('quests', [
         'userQuests' => $userQuests,
@@ -68,12 +67,10 @@ Route::post('/quests/add', function (Request $request) {
 
 Route::get('/quests/{id}', function ($id) {
     $quest = Quest::find($id)->first();
-    $bibleService = new BibleService();
-    $bibleService->setBookId($quest->book_id);
-    $bibleService->setChapterId($quest->chapter_id);
+    $bibleService = new BibleService(new Bible());
 
     return view('/quest', [
-        'bibleChapters' => $bibleService->getCurrentDayBibleChapters(),
+        'bibleChapters' => $bibleService->bible->getCurrentDayBibleChapters($quest->book_id, $quest->chapter_id),
         'quest' => $quest,
     ]);
 });
@@ -93,7 +90,7 @@ Route::post('/quests/finish', function (Request $request) {
 });
 
 Route::get('/account/bible', function() {
-    $bible = new BibleService();
-    return Response::json($bible->bible());
+    $bibleService = new BibleService(new Bible());
+    return Response::json($bibleService->bible());
 })->middleware('auth');
 

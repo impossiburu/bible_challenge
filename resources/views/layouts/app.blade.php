@@ -11,23 +11,25 @@
 <body>
     <div class="container">
         @yield('content')
-        <div class="controls">
-            <div class="control_public">
-                <i class="fa-solid fa-house"></i>
+        @if (Auth::check())
+            <div class="controls">
+                <div class="control_public">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="control_search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="control_notes">
+                    <i class="fa-regular fa-square-plus"></i>
+                </div>
+                <div class="control_quests">
+                    <a href="/quests"><i class="fa-solid fa-list-check"></i></a>
+                </div>
+                <div class="control_profile">
+                    <a href="/account"><i class="fa-solid fa-user"></i></a>
+                </div>
             </div>
-            <div class="control_search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <div class="control_notes">
-                <i class="fa-regular fa-square-plus"></i>
-            </div>
-            <div class="control_quests">
-                <a href="/quests"><i class="fa-solid fa-list-check"></i></a>
-            </div>
-            <div class="control_profile">
-                <a href="/account"><i class="fa-solid fa-user"></i></a>
-            </div>
-        </div>
+        @endif
     </div>
 </body>
 </html>
