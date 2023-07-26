@@ -15,7 +15,7 @@ Bible Challenge App - this app will help you to learn the Holy Bible and stay in
 - Names for branches same like task name
 - After pushing into your branch create a new pull request
 - Wait for accept
-- If accept, create merge request
+- If accepted, create merge request
 
 ## Config for local .env
 
