@@ -17,6 +17,21 @@ Bible Challenge App - this app will help you to learn the Holy Bible and stay in
 - Wait for accept
 - If accept, create merge request
 
+## Config for local .env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bible
+DB_USERNAME=root
+DB_PASSWORD=
+
+## FontAwesome
+
+Download icon pack localy [here](https://fontawesome.com/download)
+Put it in the public/assets
+Rename to 'fontawesome'
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
