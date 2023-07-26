@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Entities\Bible;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 
 class BibleService
 {
@@ -20,7 +22,8 @@ class BibleService
         }, $this->bible->getBibleBooks());
     }
 
-    public function bible() {
-        return $this->bible->getBibleBooks();
+    public function bibleBookAjax(): JsonResponse 
+    {
+        return Response::json($this->bible->getBibleBooks());
     }
 }

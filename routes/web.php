@@ -89,8 +89,13 @@ Route::post('/quests/finish', function (Request $request) {
     return redirect('/quests');
 });
 
-Route::get('/account/bible', function() {
-    $bibleService = new BibleService(new Bible());
-    return Response::json($bibleService->bible());
+// ajax method only
+Route::get('/account/bible', function(Request $request) {
+    if ($request->ajax()) {
+        $bibleService = new BibleService(new Bible());
+        return $bibleService->bibleBookAjax();
+    }
+    abort(404);
+    
 })->middleware('auth');
 
