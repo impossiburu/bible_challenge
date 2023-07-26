@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url('/assets/img/bg.jpg');
+    background-position: center;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.content {
+    height: 100%;
+}
+
+.auth_block {
+    max-width: 350px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.content {
+    max-width: 550px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.auth_block input {
+    height: 30px;
+    margin: 5px; 
+    max-width: 290px;
+    width: 85%;
+}
+
+.auth_block button {
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.auth_block p {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.auth_block h1, label {
+    padding: 5px;
+}
+
+.vers_num {
+    font-size: 12px;
+}
+
+.quest_block {
+    overflow: scroll;
+    max-height: 500px;
+}
+
+.quest_btn {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+.quest_btn a {
+    padding: 5px;
+}
+
+/** Панель пользователя */
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    /* left: 0; */
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0px;
+    background: #fff;
+}
+
