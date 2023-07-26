@@ -20,16 +20,23 @@ Bible Challenge App - this app will help you to learn the Holy Bible and stay in
 ## Config for local .env
 
 DB_CONNECTION=mysql
+
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
+
 DB_DATABASE=bible
+
 DB_USERNAME=root
+
 DB_PASSWORD=
 
 ## FontAwesome
 
 Download icon pack localy [here](https://fontawesome.com/download)
+
 Put it in the public/assets
+
 Rename to 'fontawesome'
 
 ## License
