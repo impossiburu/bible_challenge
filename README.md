@@ -1,4 +1,4 @@
-## About Laravel
+## About Bible Challenge App
 
 Bible Challenge App - this app will help you to learn the Holy Bible and stay in touch with the God
 
