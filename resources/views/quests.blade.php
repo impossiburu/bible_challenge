@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
+    @if (count($errors) > 0)
+        @foreach ($errors as $error)
+            <ul>
+                <li>{{ $error }}</li>
+            </ul>
+        @endforeach
+    @endif
     @if (count($userQuests) > 0)
         @foreach ($userQuests as $quest)
             <a href="/quests/{{ $quest->id }}">

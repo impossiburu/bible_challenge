@@ -4,8 +4,7 @@
 }
 
 body {
-    background-image: url('/assets/img/bg.jpg');
-    background-position: center;
+    background-color: #f4f4f4;
 }
 
 .container {
@@ -91,5 +90,63 @@ body {
     justify-content: space-around;
     padding: 10px 0px;
     background: #fff;
+}
+
+/** Аккаунт пользователя */
+
+.user_name {
+    font-size: 28px;
+}
+
+.user_notes,
+.user_followers,
+.user_name,
+.user_status {
+    text-align: center;
+}
+
+.user_data {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.profile_ctrl {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.follow_block a {
+    display: block;
+    background-color: rgb(43 116 209);
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+blockquote p {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+blockquote p::before {
+    content: '\201C';
+}
+
+blockquote p::after {
+    content: '\201D';
+}
+
+.note_ctrl {
+    display: flex;
+    justify-content: end;
+}
+
+.note_ctrl_btn {
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 

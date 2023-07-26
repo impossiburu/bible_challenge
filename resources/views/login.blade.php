@@ -3,6 +3,13 @@
 <div class="container">
     <div class="auth_block">
         <h1>Войти</h1>
+        @if (count($errors) > 0)
+            @foreach ($errors as $error)
+                <ul>
+                    <li>{{ $error }}</li>
+                </ul>
+            @endforeach
+        @endif
         <form action="{{ route('login_req') }}" method="post">
             @csrf
             <label for="phone">Телефон:</label>
