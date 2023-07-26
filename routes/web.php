@@ -81,7 +81,7 @@ Route::get('/quests/{id}', function ($id) {
 Route::post('/quests/finish', function (Request $request) {
     $quest = Quest::find($request->quest_id)->first();
     $timesLeft = Carbon::parse($quest->created_at)->diffInMinutes(Carbon::now());
-    // если разница меньше 3х минут
+    // если разница меньше 3-х минут
     if ($timesLeft < 3) {
         return back()->withErrors('Наверное ты сверхчеловек, раз читаешь так быстро :)');
     }
