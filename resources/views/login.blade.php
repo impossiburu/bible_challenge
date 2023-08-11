@@ -4,9 +4,9 @@
     <div class="auth_block">
         <h1>Войти</h1>
         @if (count($errors) > 0)
-            @foreach ($errors as $error)
+            @foreach ($errors->all() as $err)
                 <ul>
-                    <li>{{ $error }}</li>
+                    <li>{{ $err }}</li>
                 </ul>
             @endforeach
         @endif

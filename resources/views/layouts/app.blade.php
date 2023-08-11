@@ -20,7 +20,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="control_notes">
-                    <i class="fa-regular fa-square-plus"></i>
+                    <a href="/notes/new"><i class="fa-regular fa-square-plus"></i></a>
                 </div>
                 <div class="control_quests">
                     <a href="/quests"><i class="fa-solid fa-list-check"></i></a>
