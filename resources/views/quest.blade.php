@@ -17,14 +17,16 @@
     </div>
     @endif
 </div>
-<div class="quest_btn">
+@if ($quest->complete != 1)
+<div class="quest_btn_back">
+    <form action="/quests/finish" method="post">
+        @csrf
+        <input type="hidden" name="quest_id" value="{{ $quest->id }}">
+        <button type="submit" style="background-color:transparent; border: none; cursor: pointer">Прочитано</button>
+    </form>
+</div>
+@endif
+<div class="quest_btn_back">
     <a href="/quests">Назад</a>
-    @if ($quest->complete != 1)
-        <form action="/quests/finish" method="post">
-            @csrf
-            <input type="hidden" name="quest_id" value="{{ $quest->id }}">
-            <button type="submit">Прочитано</button>
-        </form>
-    @endif
 </div>
 @endsection

@@ -4,8 +4,11 @@
 }
 
 body {
-    background-image: url('/assets/img/bg.jpg');
-    background-position: center;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
 }
 
 .container {
@@ -15,11 +18,14 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.content {
-    height: 100%;
+.errors {
+    background-color: #d13c3c;
+    border-radius: 5px;
+    color: #fff;
 }
 
-.auth_block {
+.auth_block,
+.local_block {
     max-width: 350px;
     width: 90%;
     margin: 20px auto;
@@ -37,14 +43,22 @@ body {
     border-radius: 10px;
 }
 
-.auth_block input {
+.auth_block input,
+.local_block input {
     height: 30px;
     margin: 5px; 
     max-width: 290px;
     width: 85%;
 }
 
-.auth_block button {
+.local_block textarea {
+    margin: 5px; 
+    max-width: 290px;
+    width: 85%;
+}
+
+.auth_block button,
+.local_block button{
     height: 30px;
     margin: 5px;
     padding: 5px;
@@ -52,7 +66,7 @@ body {
 
 .auth_block p {
     padding: 5px;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .auth_block h1, label {
@@ -68,13 +82,37 @@ body {
     max-height: 500px;
 }
 
-.quest_btn {
-    max-width: 200px;
-    margin: 20px auto;
+.done {
+    filter: opacity(0.5);
 }
 
-.quest_btn a {
+.user_quest,
+.note {
+    max-width: 550px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.user_quest_title {
+    text-align: center;
+}
+
+.quest_btn_back {
+    max-width: 100px;
+    margin: 20px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #dcdada;
+    border-radius: 5px;
+}
+
+.quest_btnback a {
     padding: 5px;
+    text-decoration: none;
 }
 
 /** Панель пользователя */
@@ -91,5 +129,64 @@ body {
     justify-content: space-around;
     padding: 10px 0px;
     background: #fff;
+}
+
+/** Аккаунт пользователя */
+
+.user_info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user_name {
+    font-size: 28px;
+}
+
+.user_notes,
+.user_followers,
+.user_name,
+.user_status {
+    text-align: center;
+}
+
+.user_data {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.profile_ctrl {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.follow_block a {
+    display: block;
+    background-color: rgb(43 116 209);
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.bibleref {
+    text-align: end;
+}
+
+.note {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note_ctrl {
+    display: flex;
+    justify-content: end;
+}
+
+.note_ctrl_btn {
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 
