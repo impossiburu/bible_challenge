@@ -184,8 +184,25 @@ a {
     justify-content: end;
 }
 
+.note_date {
+    color: #aba4a4;
+    font-size: 13px;
+    margin-top: 5px;
+    text-align: end;
+}
+
 .note_ctrl_btn {
     width: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav {
+    width: 200px;
+    margin: 0 auto;
+}
+
+nav[role=navigation] {
     display: flex;
     justify-content: space-around;
 }

@@ -10,7 +10,7 @@
     </div>
     <div class="user_data">
         <div class="user_notes">
-            45
+            {{ $userNotesCount }}
             <div class="user_notes_title">
                 Записей
             </div>
@@ -53,14 +53,15 @@
                 <div class="note_text">
                     <p>{{ $note->text }}</p>
                     <p class="bibleref" onclick="return false;">{{ $note->verse ?? '' }}</p>
+                    <p class="note_date">{{ $note->created_at }}</p>
                 </div>
             </div>
         @endforeach
     @else
     <p>...а в ответ лишь тишина</p>
     @endif
-    <div>
-    {{ $userNotes->links() }}
+    <div class="nav">
+        {{ $userNotes->links() }}
     </div>
     
 </div>

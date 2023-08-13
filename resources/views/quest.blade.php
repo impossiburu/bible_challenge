@@ -16,6 +16,14 @@
         @endif
     </div>
     @endif
+    
+    @if (count($errors) > 0)
+        <div class="errors">
+            @foreach ($errors->all() as $err)
+                <p>{{ $err }}</p>
+            @endforeach
+        </div>
+    @endif
 </div>
 @if ($quest->complete != 1)
 <div class="quest_btn_back">

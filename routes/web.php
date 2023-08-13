@@ -49,12 +49,14 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 /** Аккаунт пользователя */
 Route::get('/account', function () {
     $userUncompleteQuest = Quest::where('complete', '<>', 1)->first();
-    $userNotes = Note::where('user_id', Auth()->user()->id)->simplePaginate(3);
+    $userNotes = Note::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->simplePaginate(3);
+    $userNotesCount = Note::where('user_id', Auth()->user()->id)->count();
 
     return view('account.account', [
         'startChallenge' => null,
         'currentProgressBook' => $userUncompleteQuest,
         'userNotes' => $userNotes,
+        'userNotesCount' => $userNotesCount,
     ]);
 })->middleware('auth');
 
@@ -102,7 +104,6 @@ Route::get('/quests', function () {
 
 /** Стартовое создание квеста (Бытие 1:1) */
 Route::post('/quests/add', function (Request $request) {
-
     Quest::create([
         'user_id' => Auth()->user()->id,
         'book_id' => $request->book_id,
@@ -115,7 +116,7 @@ Route::post('/quests/add', function (Request $request) {
 /** Детальная страница квеста */
 Route::get('/quests/{id}', function ($id) {
     $quest = Quest::find($id);
-    $quest->updated_at = Carbon::now('Europe/Moscow');
+    $quest->updated_at = date('Y-m-d H:i:s');
     $quest->save();
 
     $bibleService = new BibleService(new Bible());
@@ -130,9 +131,9 @@ Route::get('/quests/{id}', function ($id) {
 Route::post('/quests/finish', function (Request $request) {
     $quest = Quest::find($request->quest_id);
     //TODO
-    $timesLeft = Carbon::parse($quest->updated_at)->diffInMinutes(Carbon::now('Europe/Moscow'));
+    $timesLeft = strtotime(date('Y-m-d H:i:s')) - strtotime($quest->updated_at);
     // если разница меньше 3-х минут после открытии квеста
-    if ($timesLeft < 3) {
+    if ($timesLeft < 180) {
         return back()->withErrors('Наверное ты сверхчеловек, раз читаешь так быстро :)');
     }
 
