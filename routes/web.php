@@ -6,12 +6,8 @@ use App\Models\Note;
 use App\Models\Quest;
 use App\Models\User;
 use App\Services\BibleService;
-use Carbon\Carbon;
-use Carbon\CarbonTimeZone;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
@@ -48,15 +44,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 /** Аккаунт пользователя */
 Route::get('/account', function () {
-    $userUncompleteQuest = Quest::where('complete', '<>', 1)->first();
+    $userFollowerCount = DB::table('followers')->where('user_id', Auth()->user()->id)->count();
     $userNotes = Note::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->simplePaginate(3);
-    $userNotesCount = Note::where('user_id', Auth()->user()->id)->count();
 
     return view('account.account', [
-        'startChallenge' => null,
-        'currentProgressBook' => $userUncompleteQuest,
         'userNotes' => $userNotes,
-        'userNotesCount' => $userNotesCount,
+        'userFollowerCount' => $userFollowerCount,
     ]);
 })->middleware('auth');
 
@@ -165,7 +158,7 @@ Route::post('/notes/new', function(Request $request) {
         'verse' => $request->verse ?? '',
     ]);
 
-    return redirect('/notes');
+    return redirect('/account');
 })->middleware('auth');
 
 /** Форма редактирования записи */
@@ -196,14 +189,8 @@ Route::post('/notes/edit/{id}', function($id, Request $request) {
     $note->verse = $request->verse ?? '';
     $note->save();
 
-    return redirect('/notes');
+    return redirect('/account');
 })->middleware('auth')->name('note_edit_store');
-
-/** Список всех записей */
-Route::get('/notes', function() {
-    $notes = Note::where('user_id', Auth()->user()->id)->get();
-    return view('note.list', ['notes' => $notes]);
-})->middleware('auth');
 
 /** Удаление записи */
 Route::get('/notes/delete/{id}', function($id) {

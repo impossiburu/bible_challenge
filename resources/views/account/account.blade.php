@@ -10,13 +10,13 @@
     </div>
     <div class="user_data">
         <div class="user_notes">
-            {{ $userNotesCount }}
+            {{ count(Auth()->user()->notes) }}
             <div class="user_notes_title">
                 Записей
             </div>
         </div>
         <div class="user_followers">
-            1233
+            {{ $userFollowerCount }}
             <div class="user_followers_title">
                 Подписчиков
             </div>
@@ -24,20 +24,9 @@
     </div>
     <hr>
     <div class="profile_ctrl">
-        <div class="follow_block">
-            <a href="">Подписаться</a>
-        </div>
         <div class="settings_block">
             <a href="/account/settings"><i class="fa-solid fa-gear"></i></a>
         </div>
-    </div>
-    <div class="challenge_block">
-        @if ($startChallenge)
-            <div class="challenge_progress">
-                <p>Прогресс</p>
-                {{ $currentProgressBook }}
-            </div>
-        @endif
     </div>
 </div>
 <div class="notes_list">
@@ -57,12 +46,13 @@
                 </div>
             </div>
         @endforeach
+        <div class="nav">
+            {{ $userNotes->links() }}
+        </div>
     @else
     <p>...а в ответ лишь тишина</p>
     @endif
-    <div class="nav">
-        {{ $userNotes->links() }}
-    </div>
+    
     
 </div>
 <script src="//api.bibleonline.ru/ref/bible.js" type="text/javascript" charset="utf-8" defer="defer"></script>
