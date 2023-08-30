@@ -26,7 +26,7 @@
     @endif
 </div>
 @if ($quest->complete != 1)
-<div class="quest_btn_back">
+<div class="btn_back">
     <form action="/quests/finish" method="post">
         @csrf
         <input type="hidden" name="quest_id" value="{{ $quest->id }}">
@@ -34,7 +34,7 @@
     </form>
 </div>
 @endif
-<div class="quest_btn_back">
+<div class="btn_back">
     <a href="/quests">Назад</a>
 </div>
 @endsection

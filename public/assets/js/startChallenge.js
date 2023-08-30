@@ -7,8 +7,8 @@ let bibleData = JSON.parse(localStorage.getItem('bible'));
 
 if (!bibleData) {
     getBible().then(data => {
-        localStorage.setItem('bible', JSON.stringify(data.original));
-        bibleData = data.original;
+        localStorage.setItem('bible', JSON.stringify(data));
+        bibleData = data;
 
         bibleData.forEach((book, key) => {
             const option = document.createElement('option');
@@ -41,7 +41,13 @@ function setUpBibleBookChapters() {
 }
 
 async function getBible() {
-    const response = await fetch("/account/bible");
+    const response = await fetch("/account/bible", {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
     const bible = await response.json();
     return bible;
 }

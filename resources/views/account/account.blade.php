@@ -15,12 +15,6 @@
                 Записей
             </div>
         </div>
-        <div class="user_followers">
-            {{ $userFollowerCount }}
-            <div class="user_followers_title">
-                Подписчиков
-            </div>
-        </div>
     </div>
     <hr>
     <div class="profile_ctrl">
@@ -50,10 +44,10 @@
             {{ $userNotes->links() }}
         </div>
     @else
-    <p>...а в ответ лишь тишина</p>
+    <div class="btn_back">
+        <a href="/notes/new"><i class="fa-regular fa-square-plus"></i></a>
+    </div>
     @endif
-    
-    
 </div>
 <script src="//api.bibleonline.ru/ref/bible.js" type="text/javascript" charset="utf-8" defer="defer"></script>
 @endsection

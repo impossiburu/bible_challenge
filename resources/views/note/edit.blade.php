@@ -19,7 +19,7 @@
         </form>
     </div>
 </div>
-<div class="quest_btn_back">
+<div class="btn_back">
     <a href="/account">Назад</a>
 </div>
 @endsection

@@ -22,8 +22,13 @@ class BibleService
         }, $this->bible->getBibleBooks());
     }
 
-    public function bibleBookAjax(): JsonResponse 
+    public function bibleBookAjax(): array
     {
-        return Response::json($this->bible->getBibleBooks());
+        return $this->bible->getBibleBooks();
+    }
+
+    public function getBibleChaptersCount(int $bookId): int
+    {
+        return count($this->bible->getBibleBookChapters($bookId));
     }
 }

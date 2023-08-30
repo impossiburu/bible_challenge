@@ -24,7 +24,7 @@
         <button type="submit">Начать испытание</button>
     </form>
 @endif
-<div class="quest_btn_back">
+<div class="btn_back">
     <a href="/account">Назад</a>
 </div>
 <script src="/assets/js/startChallenge.js"></script>

@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Bible
 {
-    private const COUNT_OF_CHAPTER = 3;
+    public const COUNT_OF_CHAPTER = 3;
+    public const COUNT_OF_BOOKS = 65;
 
     protected $bibleResource;
 
@@ -36,5 +37,10 @@ class Bible
             'bookName' => $this->getBibleNameBookById($bookId),
             'chapters' => array_slice($this->bibleResource['Books'][$bookId]['Chapters'], $chapterId, self::COUNT_OF_CHAPTER)
         ];
+    }
+
+    public function getBibleBookChapters(int $bookId): array
+    {
+        return $this->bibleResource['Books'][$bookId]['Chapters'] ?? [];
     }
 }

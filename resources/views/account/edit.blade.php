@@ -23,7 +23,7 @@
     </div>
     <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Выйти</a>
 </div>
-<div class="quest_btn_back">
+<div class="btn_back">
     <a href="/account">Назад</a>
 </div>
 @endsection

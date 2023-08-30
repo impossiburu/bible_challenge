@@ -100,7 +100,7 @@ a {
     text-align: center;
 }
 
-.quest_btn_back {
+.btn_back {
     max-width: 100px;
     margin: 20px auto;
     text-align: center;
@@ -110,7 +110,7 @@ a {
     border-radius: 5px;
 }
 
-.quest_btnback a {
+.btn_back a {
     padding: 5px;
     text-decoration: none;
 }

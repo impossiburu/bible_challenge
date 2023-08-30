@@ -7,7 +7,9 @@ use App\Models\Quest;
 use App\Models\User;
 use App\Services\BibleService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 
@@ -97,10 +99,16 @@ Route::get('/quests', function () {
 
 /** Стартовое создание квеста (Бытие 1:1) */
 Route::post('/quests/add', function (Request $request) {
+
+    $user = User::find(Auth()->user()->id);
+    $user->start_challenge = true;
+    $user->save();
+
     Quest::create([
         'user_id' => Auth()->user()->id,
         'book_id' => $request->book_id,
         'chapter_id' => $request->chapter_id,
+        'complete' => false,
     ]);
 
     return redirect('/account');
@@ -207,7 +215,8 @@ Route::get('/notes/delete/{id}', function($id) {
 Route::get('/account/bible', function(Request $request) {
     if ($request->ajax()) {
         $bibleService = new BibleService(new Bible());
-        return $bibleService->bibleBookAjax();
+
+        return json_encode($bibleService->bibleBookAjax());
     }
     abort(404);
     
