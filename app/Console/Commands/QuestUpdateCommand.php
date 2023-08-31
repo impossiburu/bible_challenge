@@ -55,13 +55,15 @@ class QuestUpdateCommand extends Command
             $newUserQuest['chapter_id'] = $lastUserQuest->chapter_id;
             $newUserQuest['complete'] = false;
 
-            if ($lastUserQuest->book_id == Bible::COUNT_OF_BOOKS && $lastUserQuest->chapter_id == $this->bibleService->getBibleChaptersCount($lastUserQuest->chapter_id)) {
+            if ($lastUserQuest->book_id == Bible::COUNT_OF_BOOKS && $lastUserQuest->chapter_id == ($this->bibleService->getBibleChaptersCount($lastUserQuest->book_id) - 1)) {
                 continue;
             }
 
             if (empty($this->bibleService->bible->getCurrentDayBibleChapters($lastUserQuest->book_id, $lastUserQuest->chapter_id + 3)['chapters'])) {
                 $newUserQuest['book_id'] = $lastUserQuest->book_id + 1;
                 $newUserQuest['chapter_id'] = 0;
+                $user->level += 1;
+                $user->save();
             } else {
                 $newUserQuest['chapter_id'] = $lastUserQuest->chapter_id + Bible::COUNT_OF_CHAPTER;
             }

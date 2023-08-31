@@ -50,7 +50,8 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'email' => $request->email,
             'level' => 1,
-            'ghost_health' => 1,
+            'start_challenge' => 0,
+            'ip' => $request->ip,
         ]);
 
         return redirect('/');

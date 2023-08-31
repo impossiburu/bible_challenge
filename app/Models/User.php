@@ -22,8 +22,9 @@ class User extends Authenticatable
         'password',
         'phone',
         'level',
-        'ghost_health',
+        'start_challenge',
         'name',
+        'ip',
     ];
 
     /**

@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone')->unique();;
             $table->integer('level');
-            $table->integer('ghost_health');
+            $table->boolean('start_challenge');
+            $table->string('ip');
             $table->rememberToken();
             $table->timestamps();
         });
