@@ -26,9 +26,13 @@ use Illuminate\Support\Facades\Validator;
 
 /** Форма авторизации */
 Route::get('/', function () {
-    return view('login');
+    return view('home');
 })->middleware('guest')->name('home');
 
+/** Форма авторизации */
+Route::get('/login', function () {
+    return view('login');
+})->middleware('guest')->name('login');
 
 /** Авторизация */
 Route::post('/login', [AuthController::class, 'login'])->name('login_req')->middleware('guest');
@@ -36,7 +40,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login_req')->midd
 /** Форма регистрации */
 Route::get('/register', function () {
     return view('register');
-});
+})->name('register');
 
 /** Регистрация */
 Route::post('/register', [AuthController::class, 'register'])->name('register_req');
@@ -87,7 +91,7 @@ Route::post('/account/settings', function (Request $request) {
 
 /** Список всех квестов */
 Route::get('/quests', function () {
-    $userQuests = User::find(Auth()->user()->id)->quests()->get();
+    $userQuests = Quest::where('user_id', Auth()->user()->id)->simplePaginate(20);
     $bibleService = new BibleService(new Bible());
     $bibleBookNames = $bibleService->getBibleNames();
 

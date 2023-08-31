@@ -25,7 +25,7 @@
                     <a href="/account" title="Профиль"><i class="fa-solid fa-user"></i></a>
                 </div>
                 <div class="control_help">
-                    <a href="" title="Обратная связь"><i class="fa-solid fa-circle-question"></i></a>
+                    <a href="https://forms.gle/vbDEGMTTcMZCKmW2A" title="Обратная связь"><i class="fa-solid fa-circle-question"></i></a>
                 </div>
             </div>
         @endif

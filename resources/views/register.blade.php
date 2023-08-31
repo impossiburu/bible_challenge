@@ -19,7 +19,7 @@
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Введите email">
             <p>Регистрируясь, вы даете согласие на обработку персональных данных</p>
-            <p>Уже есть аккаунт? <a href="/">Войти</a></p>
+            <p>Уже есть аккаунт? <a href="{{ route('login') }}">Войти</a></p>
             <button type="submit">Зарегистрироваться</button>
         </form>
     </div>

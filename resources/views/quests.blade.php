@@ -4,10 +4,11 @@
     @foreach ($userQuests as $quest)
         <a href="/quests/{{ $quest->id }}">
             <div class="user_quest @if ($quest->complete != 0) done @endif">
-                <p class="user_quest_title">Квест №{{ $quest->id }}</p>
+                <p class="user_quest_title" data-book="{{ $quest->book_id }}" data-chapter="{{ $quest->chapter_id }}">Квест №{{ $quest->id }}</p>
             </div>
         </a>
     @endforeach
+    {{ $userQuests->links() }}
 @else
 <form action="/quests/add" method="post">
         @csrf
@@ -28,4 +29,5 @@
     <a href="/account">Назад</a>
 </div>
 <script src="/assets/js/startChallenge.js"></script>
+<script src="/assets/js/questInit.js"></script>
 @endsection
