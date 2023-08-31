@@ -15,6 +15,12 @@
                 Записей
             </div>
         </div>
+        <div class="user_status">
+            {{ Auth()->user()->level }}
+            <div class="user_level_status">
+                Уровень
+            </div>
+        </div>
     </div>
     <hr>
     <div class="profile_ctrl">
