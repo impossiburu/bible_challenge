@@ -50,12 +50,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 /** Аккаунт пользователя */
 Route::get('/account', function () {
-    $userFollowerCount = DB::table('followers')->where('user_id', Auth()->user()->id)->count();
     $userNotes = Note::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->simplePaginate(3);
 
     return view('account.account', [
         'userNotes' => $userNotes,
-        'userFollowerCount' => $userFollowerCount,
     ]);
 })->middleware('auth');
 

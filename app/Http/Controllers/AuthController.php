@@ -51,7 +51,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'level' => 1,
             'start_challenge' => 0,
-            'ip' => $request->ip,
+            'ip' => $request->ip(),
         ]);
 
         return redirect('/');
