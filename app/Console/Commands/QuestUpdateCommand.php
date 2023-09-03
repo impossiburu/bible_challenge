@@ -68,6 +68,8 @@ class QuestUpdateCommand extends Command
                 $newUserQuest['chapter_id'] = $lastUserQuest->chapter_id + Bible::COUNT_OF_CHAPTER;
             }
 
+            $newUserQuest['book_name'] = $this->bibleService->bible->getBibleNameBookById($newUserQuest['book_id']);
+
             Quest::create($newUserQuest);
         }
 

@@ -18,6 +18,7 @@ class CreateQuestsTable extends Migration
             $table->integer('user_id');
             $table->integer('book_id');
             $table->integer('chapter_id');
+            $table->string('book_name');
             $table->boolean('complete')->nullable();
             $table->timestamps();
         });

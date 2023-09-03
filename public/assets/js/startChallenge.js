@@ -3,22 +3,11 @@ const selectChapterId = document.querySelector('.chapters_select');
 
 selectBookId.addEventListener('change', setUpBibleBookChapters);
 
-let bibleData = JSON.parse(localStorage.getItem('bible'));
+let bibleData;
 
-if (!bibleData) {
-    getBible().then(data => {
-        localStorage.setItem('bible', JSON.stringify(data));
-        bibleData = data;
+getBible().then(data => {
+    bibleData = data;
 
-        bibleData.forEach((book, key) => {
-            const option = document.createElement('option');
-            option.value = key;
-            option.textContent = book.BookName;
-            selectBookId.appendChild(option);
-        });
-        setUpBibleBookChapters();
-    });
-} else {
     bibleData.forEach((book, key) => {
         const option = document.createElement('option');
         option.value = key;
@@ -26,7 +15,9 @@ if (!bibleData) {
         selectBookId.appendChild(option);
     });
     setUpBibleBookChapters();
-}
+}).catch(error => {
+    alert(error);
+});
 
 function setUpBibleBookChapters() {
     selectChapterId.innerHTML = "";
@@ -51,4 +42,3 @@ async function getBible() {
     const bible = await response.json();
     return bible;
 }
-

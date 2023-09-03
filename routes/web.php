@@ -99,17 +99,20 @@ Route::get('/quests', function () {
     ]);
 })->middleware('auth');
 
-/** Стартовое создание квеста (Бытие 1:1) */
+/** Стартовое создание квеста */
 Route::post('/quests/add', function (Request $request) {
 
     $user = User::find(Auth()->user()->id);
     $user->start_challenge = true;
     $user->save();
 
+    $bibleService = new BibleService(new Bible());
+
     Quest::create([
         'user_id' => Auth()->user()->id,
         'book_id' => $request->book_id,
         'chapter_id' => $request->chapter_id,
+        'book_name' => $bibleService->bible->getBibleNameBookById($request->book_id),
         'complete' => false,
     ]);
 

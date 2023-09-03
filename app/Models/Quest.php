@@ -13,6 +13,7 @@ class Quest extends Model
         'user_id',
         'book_id',
         'chapter_id',
+        'book_name',
         'complete',
     ];
 }
